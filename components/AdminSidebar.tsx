@@ -12,20 +12,30 @@ const navItems = [
   { icon: 'settings',          label: 'Settings',  path: '/admin/settings' },
 ];
 
-export function AdminSidebar() {
+export function AdminSidebar({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
   const { data: session } = useSession();
   const initials =
     session?.user?.name?.split(' ').map(n => n[0]).join('').toUpperCase() ?? 'A';
 
   return (
-    <aside className="w-[220px] flex-shrink-0 bg-surface-container-low border-r border-white/5 flex flex-col">
+    <aside className="w-[220px] h-full flex-shrink-0 bg-surface-container-low border-r border-white/5 flex flex-col">
       {/* Logo */}
-      <div className="p-md border-b border-white/5">
-        <div className="text-h2 font-extrabold tracking-tighter text-gradient">QK Admin</div>
-        <div className="text-label-caps font-label-caps text-on-surface-variant mt-xs tracking-[0.08em]">
-          MANAGEMENT SUITE
+      <div className="p-md border-b border-white/5 flex items-center justify-between">
+        <div>
+          <div className="text-h2 font-extrabold tracking-tighter text-gradient">QK Admin</div>
+          <div className="text-label-caps font-label-caps text-on-surface-variant mt-xs tracking-[0.08em]">
+            MANAGEMENT SUITE
+          </div>
         </div>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="lg:hidden w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container transition-colors"
+          >
+            <span className="material-symbols-outlined text-on-surface-variant text-[18px]">close</span>
+          </button>
+        )}
       </div>
 
       {/* Nav */}

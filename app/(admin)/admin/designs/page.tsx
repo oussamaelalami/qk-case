@@ -138,22 +138,23 @@ export default function DesignsPage() {
   const filtered = search ? designs.filter(d => d.name.toLowerCase().includes(search.toLowerCase())) : designs;
 
   return (
-    <div className="p-xl">
-      <div className="flex justify-between items-start mb-xl">
-        <div>
+    <div className="p-4 lg:p-xl">
+      <div className="flex justify-between items-start mb-6 lg:mb-xl gap-3">
+        <div className="min-w-0">
           <h1 className="font-h1 text-h1 text-on-surface">Manage Designs</h1>
-          <p className="text-on-surface-variant">Curate your smartphone case collection.</p>
+          <p className="text-on-surface-variant hidden sm:block">Curate your smartphone case collection.</p>
         </div>
         <button
           onClick={openAdd}
-          className="flex items-center gap-xs px-md py-sm bg-primary text-on-primary rounded-xl font-bold hover:opacity-90 transition-opacity shadow-lg"
+          className="flex-shrink-0 flex items-center gap-xs px-3 py-2 lg:px-md lg:py-sm bg-primary text-on-primary rounded-xl font-bold hover:opacity-90 transition-opacity shadow-lg text-sm"
         >
           <span className="material-symbols-outlined text-sm">add</span>
-          Add New Design
+          <span className="hidden sm:inline">Add New Design</span>
+          <span className="sm:hidden">Add</span>
         </button>
       </div>
 
-      <div className="flex gap-md mb-xl">
+      <div className="flex gap-md mb-6 lg:mb-xl">
         <div className="flex items-center bg-surface-container-low rounded-xl px-md py-sm border border-outline-variant/20 flex-1 max-w-md">
           <span className="material-symbols-outlined text-outline">search</span>
           <input

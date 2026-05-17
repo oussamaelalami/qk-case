@@ -31,7 +31,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="p-xl max-w-2xl">
+    <div className="p-4 lg:p-xl max-w-2xl">
       <div className="mb-xl">
         <h1 className="font-h1 text-h1 text-on-surface">Paramètres</h1>
         <p className="text-on-surface-variant">Configurez votre boutique.</p>

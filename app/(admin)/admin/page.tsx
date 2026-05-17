@@ -45,15 +45,15 @@ export default async function AdminDashboard() {
   ];
 
   return (
-    <div className="p-xl">
-      <div className="mb-xl flex justify-between items-start">
+    <div className="p-4 lg:p-xl">
+      <div className="mb-6 lg:mb-xl flex justify-between items-start">
         <div>
           <h1 className="font-h1 text-h1 text-on-surface">Vue d&apos;ensemble</h1>
           <p className="text-on-surface-variant">Activité du jour.</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-md mb-xl">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-md mb-6 lg:mb-xl">
         {stats.map(stat => (
           <div key={stat.label} className="bg-surface-container-lowest rounded-2xl p-md border border-outline-variant/20 shadow-sm">
             <div className="flex justify-between items-start mb-sm">
@@ -72,40 +72,44 @@ export default async function AdminDashboard() {
       <DashboardCharts />
 
       <div className="bg-surface-container-lowest rounded-2xl border border-outline-variant/20 shadow-sm overflow-hidden">
-        <div className="flex justify-between items-center p-lg border-b border-outline-variant/20">
+        <div className="flex justify-between items-center p-4 lg:p-lg border-b border-outline-variant/20">
           <h2 className="font-h2 text-h2 text-on-surface">Commandes récentes</h2>
         </div>
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-outline-variant/20">
-              {['CLIENT', 'TÉLÉPHONE', 'MODÈLE', 'STATUT', 'DATE'].map(h => (
-                <th key={h} className="text-left py-sm px-lg text-label-caps font-label-caps text-on-surface-variant">{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {recentOrders.map((order: { id: string; customerName: string; phoneNumber: string; phoneModel: string; status: string; createdAt: string }) => (
-              <tr key={order.id} className="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
-                <td className="py-md px-lg">
-                  <div className="flex items-center gap-sm">
-                    <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-                      {order.customerName[0]}
-                    </div>
-                    <div className="font-bold text-on-surface">{order.customerName}</div>
-                  </div>
-                </td>
-                <td className="py-md px-lg text-on-surface">{order.phoneNumber}</td>
-                <td className="py-md px-lg text-on-surface">{order.phoneModel}</td>
-                <td className="py-md px-lg">
-                  <span className={`px-sm py-xs rounded-full text-label-caps font-label-caps ${statusColors[order.status] || 'bg-surface-container-high text-on-surface-variant'}`}>
-                    {order.status}
-                  </span>
-                </td>
-                <td className="py-md px-lg text-on-surface-variant">{new Date(order.createdAt).toLocaleDateString()}</td>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[480px]">
+            <thead>
+              <tr className="border-b border-outline-variant/20">
+                <th className="text-left py-sm px-4 lg:px-lg text-label-caps font-label-caps text-on-surface-variant">CLIENT</th>
+                <th className="text-left py-sm px-4 lg:px-lg text-label-caps font-label-caps text-on-surface-variant hidden sm:table-cell">TÉLÉPHONE</th>
+                <th className="text-left py-sm px-4 lg:px-lg text-label-caps font-label-caps text-on-surface-variant">MODÈLE</th>
+                <th className="text-left py-sm px-4 lg:px-lg text-label-caps font-label-caps text-on-surface-variant">STATUT</th>
+                <th className="text-left py-sm px-4 lg:px-lg text-label-caps font-label-caps text-on-surface-variant hidden md:table-cell">DATE</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {recentOrders.map((order: { id: string; customerName: string; phoneNumber: string; phoneModel: string; status: string; createdAt: string }) => (
+                <tr key={order.id} className="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+                  <td className="py-md px-4 lg:px-lg">
+                    <div className="flex items-center gap-sm">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">
+                        {order.customerName[0]}
+                      </div>
+                      <div className="font-bold text-on-surface text-sm truncate max-w-[100px] sm:max-w-none">{order.customerName}</div>
+                    </div>
+                  </td>
+                  <td className="py-md px-4 lg:px-lg text-on-surface text-sm hidden sm:table-cell">{order.phoneNumber}</td>
+                  <td className="py-md px-4 lg:px-lg text-on-surface text-sm">{order.phoneModel}</td>
+                  <td className="py-md px-4 lg:px-lg">
+                    <span className={`px-sm py-xs rounded-full text-label-caps font-label-caps text-[10px] whitespace-nowrap ${statusColors[order.status] || 'bg-surface-container-high text-on-surface-variant'}`}>
+                      {order.status}
+                    </span>
+                  </td>
+                  <td className="py-md px-4 lg:px-lg text-on-surface-variant text-sm hidden md:table-cell">{new Date(order.createdAt).toLocaleDateString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

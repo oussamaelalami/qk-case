@@ -99,23 +99,24 @@ export default function CategoriesPage() {
   };
 
   return (
-    <div className="p-xl">
-      <div className="flex justify-between items-start mb-xl">
-        <div>
-          <h1 className="font-h1 text-h1 text-on-surface">Categories Management</h1>
-          <p className="text-on-surface-variant">Organize your design collections.</p>
+    <div className="p-4 lg:p-xl">
+      <div className="flex justify-between items-start mb-6 lg:mb-xl gap-3">
+        <div className="min-w-0">
+          <h1 className="font-h1 text-h1 text-on-surface">Categories</h1>
+          <p className="text-on-surface-variant hidden sm:block">Organize your design collections.</p>
         </div>
         <button
           onClick={openAdd}
-          className="flex items-center gap-xs px-md py-sm bg-primary text-on-primary rounded-xl font-bold hover:opacity-90 transition-opacity shadow-lg"
+          className="flex-shrink-0 flex items-center gap-xs px-3 py-2 lg:px-md lg:py-sm bg-primary text-on-primary rounded-xl font-bold hover:opacity-90 transition-opacity shadow-lg text-sm"
         >
           <span className="material-symbols-outlined text-sm">add</span>
-          New Category
+          <span className="hidden sm:inline">New Category</span>
+          <span className="sm:hidden">Add</span>
         </button>
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-md">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-md">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="rounded-2xl overflow-hidden border border-outline-variant/20">
               <div className="aspect-[4/3] bg-surface-container-high animate-pulse" />
@@ -129,7 +130,7 @@ export default function CategoriesPage() {
       ) : categories.length === 0 ? (
         <div className="text-center text-on-surface-variant py-xl">No categories yet. Create one to get started.</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-md">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-md">
           {categories.map(cat => (
             <div key={cat.id} className={`bg-surface-container-lowest rounded-2xl border border-outline-variant/20 shadow-sm overflow-hidden group ${!cat.active ? 'opacity-60' : ''}`}>
               <div className="aspect-[4/3] relative overflow-hidden bg-surface-container-high">

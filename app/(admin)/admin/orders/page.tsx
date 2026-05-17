@@ -73,14 +73,14 @@ export default function OrdersPage() {
     setExpandedId(prev => (prev === id ? null : id));
 
   return (
-    <div className="p-xl">
-      <div className="mb-xl">
+    <div className="p-4 lg:p-xl">
+      <div className="mb-6 lg:mb-xl">
         <h1 className="font-h1 text-h1 text-on-surface">Orders Management</h1>
         <p className="text-on-surface-variant">Manage and track custom phone case orders.</p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-xs mb-xl overflow-x-auto">
+      <div className="flex gap-xs mb-6 lg:mb-xl overflow-x-auto">
         {tabs.map((tab, i) => (
           <button
             key={tab}
@@ -104,9 +104,9 @@ export default function OrdersPage() {
         ) : (
           <div className="divide-y divide-outline-variant/10">
             {/* Header */}
-            <div className="grid grid-cols-[1fr_130px_120px_40px] gap-3 px-md py-sm bg-surface-container-low text-label-caps font-label-caps text-on-surface-variant text-xs">
+            <div className="grid grid-cols-[1fr_90px_36px] sm:grid-cols-[1fr_130px_120px_40px] gap-3 px-md py-sm bg-surface-container-low text-label-caps font-label-caps text-on-surface-variant text-xs">
               <span>Customer</span>
-              <span>Design</span>
+              <span className="hidden sm:block">Design</span>
               <span>Status</span>
               <span />
             </div>
@@ -119,7 +119,7 @@ export default function OrdersPage() {
                   <button
                     type="button"
                     onClick={() => toggleExpand(order.id)}
-                    className="w-full grid grid-cols-[1fr_130px_120px_40px] gap-3 px-md py-sm items-center hover:bg-surface-container-low transition-colors text-left"
+                    className="w-full grid grid-cols-[1fr_90px_36px] sm:grid-cols-[1fr_130px_120px_40px] gap-3 px-md py-sm items-center hover:bg-surface-container-low transition-colors text-left"
                   >
                     {/* Customer */}
                     <div>
@@ -127,8 +127,8 @@ export default function OrdersPage() {
                       <div className="text-on-surface-variant text-xs">{order.phoneNumber}</div>
                     </div>
 
-                    {/* Design thumbnail */}
-                    <div className="flex items-center gap-1.5 min-w-0">
+                    {/* Design thumbnail — hidden on mobile */}
+                    <div className="hidden sm:flex items-center gap-1.5 min-w-0">
                       {order.customImage ? (
                         <img
                           src={order.customImage}
@@ -144,8 +144,9 @@ export default function OrdersPage() {
                     </div>
 
                     {/* Status badge */}
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold w-fit ${statusColors[order.status] ?? 'bg-surface-container-high text-on-surface-variant'}`}>
-                      {order.status}
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold w-fit truncate ${statusColors[order.status] ?? 'bg-surface-container-high text-on-surface-variant'}`}>
+                      <span className="hidden sm:inline">{order.status}</span>
+                      <span className="sm:hidden">{order.status.slice(0, 3)}</span>
                     </span>
 
                     {/* Expand arrow */}
