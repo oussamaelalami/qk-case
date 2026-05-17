@@ -8,6 +8,8 @@ node_modules/
 out/
 dist/
 build/
+tsconfig.tsbuildinfo
+next-env.d.ts
 
 # Environment files — NEVER commit these
 .env
@@ -36,6 +38,11 @@ Thumbs.db
 prisma/*.db
 prisma/*.db-journal
 
+# Claude Code / agent files (may contain tokens)
+.mcp.json
+.agents/
+skills-lock.json
+
 # Misc
 .cache/
 .vercel
@@ -44,3 +51,5 @@ screens-metadata.json
 download-screens.mjs
 fetch-screens.mjs
 generate-case-template.html
+
+.vercel
