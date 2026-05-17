@@ -22,7 +22,7 @@ async function getDashboardData() {
       supabase.from('orders').select('*', { count: 'exact', head: true }),
       supabase.from('orders').select('*', { count: 'exact', head: true }).eq('status', 'PENDING'),
       supabase.from('designs').select('*', { count: 'exact', head: true }).eq('active', true),
-      supabase.from('orders').select('id, customerName, phoneNumber, phoneModel, status, createdAt').order('createdAt', { ascending: false }).limit(5),
+      supabase.from('orders').select('id, customerName, phoneNumber, phoneBrand, phoneModel, status, createdAt').order('createdAt', { ascending: false }).limit(5),
     ]);
     return {
       totalOrders: totalOrders ?? 0,
@@ -87,7 +87,7 @@ export default async function AdminDashboard() {
               </tr>
             </thead>
             <tbody>
-              {recentOrders.map((order: { id: string; customerName: string; phoneNumber: string; phoneModel: string; status: string; createdAt: string }) => (
+              {recentOrders.map((order: { id: string; customerName: string; phoneNumber: string; phoneBrand: string; phoneModel: string; status: string; createdAt: string }) => (
                 <tr key={order.id} className="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
                   <td className="py-md px-4 lg:px-lg">
                     <div className="flex items-center gap-sm">
@@ -98,7 +98,7 @@ export default async function AdminDashboard() {
                     </div>
                   </td>
                   <td className="py-md px-4 lg:px-lg text-on-surface text-sm hidden sm:table-cell">{order.phoneNumber}</td>
-                  <td className="py-md px-4 lg:px-lg text-on-surface text-sm">{order.phoneModel}</td>
+                  <td className="py-md px-4 lg:px-lg text-on-surface text-sm">{order.phoneBrand} {order.phoneModel}</td>
                   <td className="py-md px-4 lg:px-lg">
                     <span className={`px-sm py-xs rounded-full text-label-caps font-label-caps text-[10px] whitespace-nowrap ${statusColors[order.status] || 'bg-surface-container-high text-on-surface-variant'}`}>
                       {order.status}
