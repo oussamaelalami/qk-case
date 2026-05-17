@@ -219,7 +219,7 @@ export default function DesignsPage() {
                 <h3 className="font-bold text-on-surface mb-xs truncate">{design.name}</h3>
                 <div className="flex justify-between items-center">
                   <span className="text-on-surface-variant text-body-md">{design.category?.name}</span>
-                  <span className="text-primary font-bold">{design.price}€</span>
+                  <span className="text-primary font-bold">{design.price} MAD</span>
                 </div>
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function DesignsPage() {
                   {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
               </Field>
-              <Field label="Price (€) *">
+              <Field label="Price (MAD) *">
                 <input type="number" value={form.price} onChange={e => setForm(f => ({ ...f, price: e.target.value }))} placeholder="19.99" min="0" step="0.01" className={inputCls} />
               </Field>
               <Field label="Description">

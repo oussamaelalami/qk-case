@@ -91,15 +91,16 @@ export default function PhoneModelsPage() {
   const brands = [...new Set(models.map(m => m.brand))];
 
   return (
-    <div className="p-lg">
-      <div className="flex items-center justify-between mb-lg">
-        <div>
+    <div className="p-4 lg:p-lg">
+      <div className="flex items-center justify-between mb-6 lg:mb-lg gap-3">
+        <div className="min-w-0">
           <h1 className="text-h1 font-extrabold text-on-surface">Phone Models</h1>
-          <p className="text-on-surface-variant text-body-md">Manage phone brands, models and their case photos</p>
+          <p className="text-on-surface-variant text-body-md hidden sm:block">Manage phone brands, models and their case photos</p>
         </div>
-        <button onClick={openAdd} className="flex items-center gap-sm px-md py-sm bg-primary text-on-primary rounded-2xl font-bold hover:opacity-90 transition-opacity">
-          <span className="material-symbols-outlined">add</span>
-          Add Model
+        <button onClick={openAdd} className="flex-shrink-0 flex items-center gap-sm px-3 py-2 lg:px-md lg:py-sm bg-primary text-on-primary rounded-2xl font-bold hover:opacity-90 transition-opacity text-sm">
+          <span className="material-symbols-outlined text-sm">add</span>
+          <span className="hidden sm:inline">Add Model</span>
+          <span className="sm:hidden">Add</span>
         </button>
       </div>
 
@@ -119,7 +120,7 @@ export default function PhoneModelsPage() {
               <span className="material-symbols-outlined text-primary">smartphone</span>
               {brand}
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-md">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-md">
               {models.filter(m => m.brand === brand).map(m => (
                 <div key={m.id} className="bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/20">
                   <div className="aspect-[3/4] relative bg-surface-container-high">
