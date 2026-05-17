@@ -1,0 +1,59 @@
+{
+  "project": "QK Case Customizer Studio",
+  "stitch_project_id": "9705953958536442967",
+  "fonts": {
+    "display": "Inter 800",
+    "h1": "Inter 700",
+    "h2": "Inter 600",
+    "body-lg": "Inter 400",
+    "body-md": "Inter 400",
+    "label-caps": "IBM Plex Sans 600"
+  },
+  "colors": {
+    "primary": "#4648d4",
+    "tertiary": "#8127cf",
+    "secondary": "#0058be",
+    "primary-container": "#6063ee",
+    "tertiary-container": "#9c48ea",
+    "secondary-container": "#2170e4",
+    "on-primary": "#ffffff",
+    "on-secondary": "#ffffff",
+    "on-tertiary": "#ffffff",
+    "on-primary-container": "#fffbff",
+    "background": "#faf8ff",
+    "surface": "#faf8ff",
+    "surface-container-lowest": "#ffffff",
+    "surface-container-low": "#f2f3ff",
+    "surface-container": "#eaedff",
+    "surface-container-high": "#e2e7ff",
+    "surface-container-highest": "#dae2fd",
+    "on-surface": "#131b2e",
+    "on-surface-variant": "#464554",
+    "outline": "#767586",
+    "outline-variant": "#c7c4d7",
+    "error": "#ba1a1a",
+    "inverse-surface": "#283044"
+  },
+  "roundness": {
+    "DEFAULT": "4px",
+    "lg": "8px",
+    "xl": "12px",
+    "2xl": "24px",
+    "full": "9999px"
+  },
+  "spacing": {
+    "xs": "8px",
+    "sm": "16px",
+    "md": "24px",
+    "lg": "40px",
+    "xl": "64px",
+    "gutter": "20px"
+  },
+  "effects": {
+    "glass-card": "rgba(255,255,255,0.6) + backdrop-filter: blur(12px)",
+    "text-gradient": "linear-gradient(135deg, #4648d4 0%, #9c48ea 100%)",
+    "hover-lift": "translateY(-4px) scale(1.02)",
+    "hero-glow-primary": "blur(120px) primary-container/20",
+    "hero-glow-tertiary": "blur(120px) tertiary-container/20"
+  }
+}
